@@ -134,9 +134,13 @@ header { padding: 20px 0; }
     line-height: 1.85;
     font-weight: 300;
     padding: 0 4px;
-    word-break: keep-all;
+    /* keep-all は日本語で改行を完全に阻害するため normal に変更 */
+    word-break: normal;
     overflow-wrap: break-word;
 }
+
+/* レスポンシブ改行ヘルパー: デフォルトは非表示 */
+.br-tb, .br-sp { display: none; }
 
 .animate-text-sub {
     opacity: 0;
@@ -305,6 +309,9 @@ footer {
 
 /* タブレット縦 (≤ 768px) */
 @media (max-width: 768px) {
+    /* 「ディープに〜」の前で改行 */
+    .br-tb { display: inline; }
+
     .hero { padding: 36px 0 52px; }
     .logo-img { width: 88px; }
 
@@ -324,6 +331,9 @@ footer {
 
 /* スマートフォン (≤ 480px) */
 @media (max-width: 480px) {
+    /* 「テーマごとの〜」の前でも改行 */
+    .br-sp { display: inline; }
+
     .container { padding: 0 16px; }
 
     .hero { padding: 28px 0 40px; }
